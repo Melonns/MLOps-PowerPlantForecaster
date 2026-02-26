@@ -15,3 +15,16 @@ Proyek ini mengadopsi struktur konvensi industri (*Cookiecutter Data Science*):
 ├── .devcontainer/   # Konfigurasi isolasi lingkungan GitHub Codespaces
 ├── requirements.txt # Daftar dependensi library Python
 └── README.md        # Dokumentasi utama proyek
+
+## 🚀 Cara Menjalankan Lingkungan Pengembangan (Codespaces)
+
+Proyek ini dirancang agar dapat dijalankan secara instan menggunakan **GitHub Codespaces** tanpa memerlukan instalasi manual di laptop (*zero-setup environment*). Seluruh dependensi MLOps telah dikonfigurasi menggunakan Dev Container.
+
+Berikut adalah langkah-langkah untuk menjalankan Codespaces:
+1. Buka halaman repositori proyek ini di GitHub.
+2. Klik tombol hijau **`<> Code`** di pojok kanan atas.
+3. Pilih tab **`Codespaces`**.
+4. Klik tombol **`Create codespace on main`** (atau pada *branch* eksperimen seperti `feat/initial-eda`).
+5. Tunggu beberapa saat hingga proses *building container* selesai. Visual Studio Code akan terbuka langsung di *browser*.
+6. Lingkungan Python 3.10 beserta seluruh *library* pendukung (seperti XGBoost, FastAPI, dan MLflow) akan otomatis terinstal di latar belakang berdasarkan file `.devcontainer` dan `requirements.txt`.
+7. Buka terminal di dalam VS Code (tekan `` Ctrl + ` ``), dan lingkungan pengembangan siap digunakan!
