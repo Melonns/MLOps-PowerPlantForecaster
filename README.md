@@ -15,7 +15,7 @@ Proyek ini mengadopsi struktur konvensi industri (*Cookiecutter Data Science*):
 ├── .devcontainer/   # Konfigurasi isolasi lingkungan GitHub Codespaces
 ├── requirements.txt # Daftar dependensi library Python
 └── README.md        # Dokumentasi utama proyek
-
+```
 ## 🚀 Cara Menjalankan Lingkungan Pengembangan (Codespaces)
 
 Proyek ini dirancang agar dapat dijalankan secara instan menggunakan **GitHub Codespaces** tanpa memerlukan instalasi manual di laptop (*zero-setup environment*). Seluruh dependensi MLOps telah dikonfigurasi menggunakan Dev Container.
