@@ -1,30 +1,61 @@
-# ☀️ Prediksi Output Daya PLTS Berbasis MLOps (Proof of Concept)
+# Forecasting Daya PLTS
 
-Proyek ini merupakan *Proof of Concept* (PoC) untuk sistem peramalan (*forecasting*) produksi daya Pembangkit Listrik Tenaga Surya (PLTS) secara *hyperlocal*. Sistem ini mengintegrasikan *machine learning* (XGBoost Regressor) dengan alur kerja *Continuous Training* (CT) MLOps untuk beradaptasi terhadap *data drift* akibat transisi cuaca.
+<a target="_blank" href="https://cookiecutter-data-science.drivendata.org/">
+    <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
+</a>
 
-## 📁 Struktur Direktori
-Proyek ini mengadopsi struktur konvensi industri (*Cookiecutter Data Science*):
-```text
-├── config/          # File konfigurasi sistem dan parameter model
-├── data/
-│   ├── processed/   # Data cuaca yang sudah dinormalisasi (Feature Store)
-│   └── raw/         # Data JSON mentah dari Open-Meteo API
-├── models/          # Model XGBoost yang telah dilatih (Model Registry lokal)
-├── notebooks/       # Jupyter notebooks untuk tahap Exploratory Data Analysis (EDA)
-├── src/             # Source code utama (Data ingestion, Training, FastAPI)
-├── .devcontainer/   # Konfigurasi isolasi lingkungan GitHub Codespaces
-├── requirements.txt # Daftar dependensi library Python
-└── README.md        # Dokumentasi utama proyek
+PoC MLOps untuk prediksi daya surya dengan XGBoost
+
+## Project Organization
+
 ```
-## 🚀 Cara Menjalankan Lingkungan Pengembangan (Codespaces)
+├── LICENSE            <- Open-source license if one is chosen
+├── Makefile           <- Makefile with convenience commands like `make data` or `make train`
+├── README.md          <- The top-level README for developers using this project.
+├── data
+│   ├── external       <- Data from third party sources.
+│   ├── interim        <- Intermediate data that has been transformed.
+│   ├── processed      <- The final, canonical data sets for modeling.
+│   └── raw            <- The original, immutable data dump.
+│
+├── docs               <- A default mkdocs project; see www.mkdocs.org for details
+│
+├── models             <- Trained and serialized models, model predictions, or model summaries
+│
+├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
+│                         the creator's initials, and a short `-` delimited description, e.g.
+│                         `1.0-jqp-initial-data-exploration`.
+│
+├── pyproject.toml     <- Project configuration file with package metadata for 
+│                         plts_forecaster and configuration for tools like black
+│
+├── references         <- Data dictionaries, manuals, and all other explanatory materials.
+│
+├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
+│   └── figures        <- Generated graphics and figures to be used in reporting
+│
+├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
+│                         generated with `pip freeze > requirements.txt`
+│
+├── setup.cfg          <- Configuration file for flake8
+│
+└── plts_forecaster   <- Source code for use in this project.
+    │
+    ├── __init__.py             <- Makes plts_forecaster a Python module
+    │
+    ├── config.py               <- Store useful variables and configuration
+    │
+    ├── dataset.py              <- Scripts to download or generate data
+    │
+    ├── features.py             <- Code to create features for modeling
+    │
+    ├── modeling                
+    │   ├── __init__.py 
+    │   ├── predict.py          <- Code to run model inference with trained models          
+    │   └── train.py            <- Code to train models
+    │
+    └── plots.py                <- Code to create visualizations
+```
 
-Proyek ini dirancang agar dapat dijalankan secara instan menggunakan **GitHub Codespaces** tanpa memerlukan instalasi manual di laptop (*zero-setup environment*). Seluruh dependensi MLOps telah dikonfigurasi menggunakan Dev Container.
+--------
 
-Berikut adalah langkah-langkah untuk menjalankan Codespaces:
-1. Buka halaman repositori proyek ini di GitHub.
-2. Klik tombol hijau **`<> Code`** di pojok kanan atas.
-3. Pilih tab **`Codespaces`**.
-4. Klik tombol **`Create codespace on main`** (atau pada *branch* eksperimen seperti `feat/initial-eda`).
-5. Tunggu beberapa saat hingga proses *building container* selesai. Visual Studio Code akan terbuka langsung di *browser*.
-6. Lingkungan Python 3.10 beserta seluruh *library* pendukung (seperti XGBoost, FastAPI, dan MLflow) akan otomatis terinstal di latar belakang berdasarkan file `.devcontainer` dan `requirements.txt`.
-7. Buka terminal di dalam VS Code (tekan `` Ctrl + ` ``), dan lingkungan pengembangan siap digunakan!
