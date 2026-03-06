@@ -35,17 +35,17 @@ Lingkungan kerja proyek ini sudah dikonfigurasi penuh via **Dev Container** (`.d
 ### Menjalankan Pipeline
 
 ```bash
+# Install dependencies
+make requirements
+
 # Download data cuaca dari Open-Meteo API
 make data
 
-# Jalankan feature engineering
-make features
+# Jalankan linting & format check
+make lint
 
-# Training model XGBoost
-make train
-
-# Jalankan prediksi/inferensi
-make predict
+# Jalankan semua unit tests
+make test
 ```
 
 ---
