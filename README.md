@@ -1,4 +1,4 @@
-# ☀️ Forecasting Daya PLTS (PoC MLOps)
+# Forecasting Daya PLTS (PoC MLOps)
 
 Proyek ini adalah *Proof of Concept* (PoC) sistem prediksi produksi daya **Pembangkit Listrik Tenaga Surya (PLTS)** secara *hyperlocal*. Menggunakan algoritma **XGBoost Regressor** dan diintegrasikan ke dalam alur **MLOps** untuk menangani *data drift* akibat perubahan cuaca musiman.
 
@@ -13,7 +13,7 @@ Proyek ini adalah *Proof of Concept* (PoC) sistem prediksi produksi daya **Pemba
 
 ---
 
-## 🚀 Cara Menjalankan di GitHub Codespaces
+## Cara Menjalankan di GitHub Codespaces
 
 Lingkungan kerja proyek ini sudah dikonfigurasi penuh via **Dev Container** (`.devcontainer/devcontainer.json`), sehingga tidak perlu setup manual.
 
@@ -50,7 +50,7 @@ make test
 
 ---
 
-## 🌿 Branching Strategy (GitHub Flow)
+## Branching Strategy (GitHub Flow)
 
 Proyek ini menggunakan **GitHub Flow**:
 
@@ -68,7 +68,7 @@ main  ←── merge (setelah review & validasi)
 
 ---
 
-## 📁 Project Organization
+## Project Organization
 
 ```text
 ├── .gitignore         <- File yang diabaikan Git
