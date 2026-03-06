@@ -1,8 +1,8 @@
-# ☀️ Forecasting Daya PLTS (PoC MLOps)
+# Forecasting Daya PLTS (PoC MLOps)
 
 Proyek ini adalah *Proof of Concept* (PoC) sistem prediksi produksi daya Pembangkit Listrik Tenaga Surya (PLTS) secara *hyperlocal*. Menggunakan algoritma **XGBoost Regressor** dan diintegrasikan ke dalam alur **MLOps** untuk menangani *data drift* akibat perubahan cuaca musiman.
 
-## 📁 Project Organization
+## Project Organization
 
 ```text
 ├── .gitignore         <- File yang diabaikan Git
