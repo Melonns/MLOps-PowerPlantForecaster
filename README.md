@@ -1,8 +1,74 @@
-# Forecasting Daya PLTS (PoC MLOps)
+# ☀️ Forecasting Daya PLTS (PoC MLOps)
 
-Proyek ini adalah *Proof of Concept* (PoC) sistem prediksi produksi daya Pembangkit Listrik Tenaga Surya (PLTS) secara *hyperlocal*. Menggunakan algoritma **XGBoost Regressor** dan diintegrasikan ke dalam alur **MLOps** untuk menangani *data drift* akibat perubahan cuaca musiman.
+Proyek ini adalah *Proof of Concept* (PoC) sistem prediksi produksi daya **Pembangkit Listrik Tenaga Surya (PLTS)** secara *hyperlocal*. Menggunakan algoritma **XGBoost Regressor** dan diintegrasikan ke dalam alur **MLOps** untuk menangani *data drift* akibat perubahan cuaca musiman.
 
-## Project Organization
+## 🎯 Tujuan Proyek
+
+| Tujuan | Keterangan |
+|---|---|
+| **Prediksi Daya** | Memprediksi output daya PLTS (kWh) berdasarkan data cuaca *hyperlocal* dari Open-Meteo API |
+| **Otomasi MLOps** | Membangun pipeline otomatis mulai dari ingest data, feature engineering, training, hingga inferensi |
+| **Continuous Training** | Model diperbarui secara berkala untuk mengatasi *data drift* akibat perubahan musim/cuaca |
+| **Reproducibility** | Setiap eksperimen dapat direproduksi oleh siapa pun menggunakan GitHub Codespaces |
+
+---
+
+## 🚀 Cara Menjalankan di GitHub Codespaces
+
+Lingkungan kerja proyek ini sudah dikonfigurasi penuh via **Dev Container** (`.devcontainer/devcontainer.json`), sehingga tidak perlu setup manual.
+
+### Langkah-langkah
+
+1. Buka repositori ini di GitHub
+2. Klik tombol **`<> Code`** → tab **`Codespaces`** → **`Create codespace on main`**
+3. Tunggu hingga environment selesai dibangun otomatis (± 2-3 menit pertama kali)
+4. Semua dependensi akan ter-install otomatis melalui `pip install -r requirements.txt`
+
+### Yang Sudah Terkonfigurasi Otomatis
+
+| Komponen | Detail |
+|---|---|
+| **Python** | 3.10 (via Dev Container image) |
+| **Dependencies** | `requirements.txt` di-install via `postCreateCommand` |
+| **VS Code Extensions** | `ms-python.python`, `ms-python.vscode-pylance` |
+
+### Menjalankan Pipeline
+
+```bash
+# Download data cuaca dari Open-Meteo API
+make data
+
+# Jalankan feature engineering
+make features
+
+# Training model XGBoost
+make train
+
+# Jalankan prediksi/inferensi
+make predict
+```
+
+---
+
+## 🌿 Branching Strategy (GitHub Flow)
+
+Proyek ini menggunakan **GitHub Flow**:
+
+```
+main  ←── merge (setelah review & validasi)
+  └── feat/initial-eda   ← branch eksperimen awal (EDA & baseline model)
+```
+
+| Branch | Tujuan |
+|---|---|
+| `main` | Branch stabil, hanya menerima merge setelah divalidasi |
+| `feat/initial-eda` | Eksperimen awal: EDA, baseline model, dan feature engineering pertama |
+
+> **Aturan:** Tidak ada push langsung ke `main`. Semua perubahan harus melalui branch fitur dan Pull Request.
+
+---
+
+## 📁 Project Organization
 
 ```text
 ├── .gitignore         <- File yang diabaikan Git
