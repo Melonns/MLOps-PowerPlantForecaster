@@ -1,61 +1,48 @@
-# Forecasting Daya PLTS
+# ☀️ Forecasting Daya PLTS (PoC MLOps)
 
-<a target="_blank" href="https://cookiecutter-data-science.drivendata.org/">
-    <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
-</a>
+Proyek ini adalah *Proof of Concept* (PoC) sistem prediksi produksi daya Pembangkit Listrik Tenaga Surya (PLTS) secara *hyperlocal*. Menggunakan algoritma **XGBoost Regressor** dan diintegrasikan ke dalam alur **MLOps** untuk menangani *data drift* akibat perubahan cuaca musiman.
 
-PoC MLOps untuk prediksi daya surya dengan XGBoost
+## 📁 Project Organization
 
-## Project Organization
-
-```
-├── LICENSE            <- Open-source license if one is chosen
-├── Makefile           <- Makefile with convenience commands like `make data` or `make train`
-├── README.md          <- The top-level README for developers using this project.
+```text
+├── .gitignore         <- File yang diabaikan Git
+├── LICENSE            <- Open-source license (MIT)
+├── Makefile           <- Perintah otomatisasi: `make data` (ingest) atau `make train` (training)
+├── README.md          <- Dokumentasi utama proyek
 ├── data
-│   ├── external       <- Data from third party sources.
-│   ├── interim        <- Intermediate data that has been transformed.
-│   ├── processed      <- The final, canonical data sets for modeling.
-│   └── raw            <- The original, immutable data dump.
+│   ├── external       <- Data dari sumber pihak ketiga (Open-Meteo API)
+│   ├── interim        <- Data yang sudah melalui transformasi tahap awal
+│   ├── processed      <- Dataset final yang siap digunakan untuk modeling (Feature Store)
+│   └── raw            <- Data mentah asli yang tidak boleh diubah (Immutable)
 │
-├── docs               <- A default mkdocs project; see www.mkdocs.org for details
+├── docs               <- Dokumentasi teknis berbasis MkDocs
+│   ├── mkdocs.yml     <- Konfigurasi MkDocs
+│   └── docs/          <- Halaman dokumentasi (index.md, getting-started.md)
 │
-├── models             <- Trained and serialized models, model predictions, or model summaries
+├── models             <- Model XGBoost (.json/.pkl) yang sudah dilatih & Model Registry
 │
-├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-│                         the creator's initials, and a short `-` delimited description, e.g.
-│                         `1.0-jqp-initial-data-exploration`.
+├── notebooks          <- Jupyter notebooks untuk eksperimen (E.g: 1.0-Initial-EDA.ipynb)
 │
-├── pyproject.toml     <- Project configuration file with package metadata for 
-│                         plts_forecaster and configuration for tools like black
+├── plts_forecaster    <- Source code utama (Python Module)
+│   ├── __init__.py    <- Menjadikan folder ini sebagai modul Python
+│   ├── config.py      <- Pengaturan variabel lingkungan dan URL API
+│   ├── dataset.py     <- Script untuk download data cuaca (Data Ingestion)
+│   ├── features.py    <- Code untuk Feature Engineering
+│   ├── modeling       
+│   │   ├── __init__.py 
+│   │   ├── predict.py <- Script untuk menjalankan inferensi (Inference Engine)
+│   │   └── train.py   <- Script untuk melatih ulang model (Continuous Training)
+│   └── plots.py       <- Script untuk pembuatan visualisasi otomatis
 │
-├── references         <- Data dictionaries, manuals, and all other explanatory materials.
+├── pyproject.toml     <- Konfigurasi metadata package, Ruff, dan formatters
 │
-├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures        <- Generated graphics and figures to be used in reporting
+├── references         <- Kamus data, manual API, dan materi pendukung lainnya
 │
-├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-│                         generated with `pip freeze > requirements.txt`
+├── reports            <- Hasil analisis dalam bentuk HTML, PDF, atau LaTeX
+│   └── figures        <- Grafik hasil prediksi dan evaluasi model (MAE/RMSE plots)
 │
-├── setup.cfg          <- Configuration file for flake8
+├── requirements.txt   <- Daftar dependensi Python (XGBoost, FastAPI, MLflow, dll)
 │
-└── plts_forecaster   <- Source code for use in this project.
-    │
-    ├── __init__.py             <- Makes plts_forecaster a Python module
-    │
-    ├── config.py               <- Store useful variables and configuration
-    │
-    ├── dataset.py              <- Scripts to download or generate data
-    │
-    ├── features.py             <- Code to create features for modeling
-    │
-    ├── modeling                
-    │   ├── __init__.py 
-    │   ├── predict.py          <- Code to run model inference with trained models          
-    │   └── train.py            <- Code to train models
-    │
-    └── plots.py                <- Code to create visualizations
+└── tests              <- Unit tests dan integration tests
+    └── test_data.py   <- Test untuk modul dataset
 ```
-
---------
-
